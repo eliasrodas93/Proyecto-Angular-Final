@@ -1,0 +1,11 @@
+section{
+    min-height: 500px;
+    form{
+        padding-left:10px;
+    }
+    div{
+        &.post-button{
+            padding-left:10px;
+        }
+    }
+}

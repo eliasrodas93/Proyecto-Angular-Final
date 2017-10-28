@@ -1,0 +1,18 @@
+mat-sidenav-container{
+    margin:5px;
+    mat-sidenav{
+        width: 250px;
+        font-size: 15px;
+    }
+}
+ngb-pagination{
+    max-width: 250px;
+}
+div{
+    &.my-content{
+        margin-right: 150px;;
+    }
+    &.pagination {
+        
+    }
+}

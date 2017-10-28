@@ -1,0 +1,29 @@
+div{
+    &.content{
+        padding-left:10px;
+        border-bottom-style: double;
+    }
+    &.comment-section{
+        margin-top: 10px;
+        padding-left: 10px;
+    }
+    &.row{
+        position: relative;
+    }
+    #dropdownComments{
+        margin-left: 10px;
+    }
+    &.comment-button{
+        margin-right: 15px;
+    }
+}
+form{
+    padding-top: 5px;
+    padding-left: 10px;
+}
+section{
+    margin-left: 10px;
+    &.article{
+        min-height: 500px;
+    }
+}

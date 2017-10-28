@@ -1,0 +1,32 @@
+<div *ngIf="post">
+  <section class="article">
+    {{post.body}}
+  </section>
+</div>
+<form>
+  <div class="form-group">
+    <label for="comment">Comentarios:</label>
+    <textarea class="form-control" id="comment" rows="3" placeholder="Ingrese su comentario aqui..." #myComment></textarea>
+  </div>  
+</form>
+<div class="row">
+  <div class="col">
+    <div ngbDropdown class="d-inline-block">
+      <button class="btn btn-outline-primary" id="dropdownComments" ngbDropdownToggle>Opciones</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownComments">
+        <button class="dropdown-item" (click)="end=5">Top 5 comments</button>
+        <button class="dropdown-item" (click)="end=10">Top 10 comments</button>
+    </div>
+  </div>
+</div>
+<div class="comment-button">
+  <button class="btn btn-outline-success my-2 my-sm-0" (click)="addComment(myComment.value); myComment.value='';">Comentar</button>
+</div>
+<section>
+  <div *ngFor="let comment of comments | slice:0:end" class="comment-section">
+    <div>
+      <h6>{{comment.email | lowercase}}</h6>
+      <p>{{comment.body}}</p>
+    </div>
+  </div>
+</section>

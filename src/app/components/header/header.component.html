@@ -1,0 +1,50 @@
+<header>
+  <ngb-carousel>
+    <ng-template ngbSlide>
+      <img src="https://hdwallsource.com/img/2014/11/hd-panoramic-wallpaper-23565-24217-hd-wallpapers.jpg" alt="Random first slide">
+      <div class="carousel-caption">
+        <h2>Welcome to our blog</h2>
+        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <img src="https://sergimateo.com/wp-content/2012/08/fotos-panoramicas-1.jpg" alt="Random second slide">
+      <div class="carousel-caption">
+        <h2>Welcome to our blog</h2>
+        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <img src="https://sergimateo.com/wp-content/2012/08/fotos-panoramicas-12.jpg" alt="Random third slide">
+      <div class="carousel-caption">
+        <h2>Welcome to our blog</h2>
+        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+      </div></ng-template>
+  </ngb-carousel>
+</header>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Proyecto Angular</a>
+  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="">Inicio <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/about-us">Nosotros</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/contact-us">Contacto</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/create-post">Crear Post</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+    </form>
+  </div>
+</nav>
