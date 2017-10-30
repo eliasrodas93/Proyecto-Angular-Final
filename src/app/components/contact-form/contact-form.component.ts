@@ -14,6 +14,7 @@ export class ContactFormComponent implements OnInit {
   country:string;
   successMessage:boolean = false;
   alertMessage:string = "This is a required field";
+  
   constructor(private fb:FormBuilder){
     this.contactForm = fb.group({
       'name': ['', Validators.required],
@@ -27,6 +28,11 @@ export class ContactFormComponent implements OnInit {
   }
 
   onClick(name:string, email:string, comment:string, country:string,){
-    this.successMessage=true;
+    if(name && email && comment && country){
+      this.successMessage=true;
+    }
+    else{
+      this.successMessage=false;
+    }  
   }
 }

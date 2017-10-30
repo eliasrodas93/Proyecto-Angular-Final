@@ -17,11 +17,12 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { CreatePostComponent } from './components/create-post/create-post.component';
 import { UserListComponent } from './components/user-list/user-list.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 import { DataService } from './services/data.service';
 import { UserListService } from './services/user-list.service';
-import { LoginComponent } from './components/login/login.component';
-import { SignupComponent } from './components/signup/signup.component';
+
 
 
 @NgModule({

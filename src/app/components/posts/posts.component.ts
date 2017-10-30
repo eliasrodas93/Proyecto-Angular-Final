@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SlicePipe } from '@angular/common';
-
+import { UserListService } from '../../services/user-list.service';
 import { DataService } from '../../services/data.service';
 import { Post } from '../../interfaces/post.interface';
 import { Comment } from '../../interfaces/comment.interface';
@@ -16,13 +16,19 @@ export class PostsComponent implements OnInit {
   comments:Comment[];
   post:any;
   end:number;
+  currentUserEmail:string;
 
-  constructor(private postService:DataService, private commentServices: DataService, private route: ActivatedRoute) { }
+  constructor(private userlistService:UserListService, private postService:DataService, private commentServices: DataService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     /*this.postService.getStaticPosts().subscribe((posts)=>{
       this.posts = posts;
     });*/
+
+    this.userlistService.currentEmail.subscribe(email => {
+      this.currentUserEmail = email;
+      console.log(email);
+    });
 
     this.commentServices.getComments().subscribe((comments) => {
       this.comments=comments;
@@ -42,15 +48,26 @@ export class PostsComponent implements OnInit {
   }
 
   addComment(myComment:string){
-    let comment = {
-      "postId":"0",
-      "id":"0",
-      "email":"lol",
-      "body":myComment
-    }
-    if(!myComment){
-      return;
-    }
+    let comment: Comment; 
+      if(!myComment){
+        return;
+      }
+      if(this.currentUserEmail){
+        comment = {
+          "postId":"0",
+          "id":"0",
+          "email":this.currentUserEmail,
+          "body":myComment
+        }
+      }
+      else{
+        comment = {
+          "postId":"0",
+          "id":"0",
+          "email":"unknown",
+          "body":myComment
+        }
+      }
     this.comments.unshift(comment);
   }
 }

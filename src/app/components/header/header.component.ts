@@ -12,7 +12,8 @@ export class HeaderComponent implements OnInit {
   currentUserUsername:string;
   currentUserEmail:string;
 
-  constructor(private userlistService:UserListService) { }
+  constructor(private userlistService:UserListService){
+  }
 
   ngOnInit() {
     this.userlistService.currentId.subscribe(id => {
@@ -27,5 +28,12 @@ export class HeaderComponent implements OnInit {
       this.currentUserEmail = email;
       console.log(email);
     });
+  }
+
+  signOut(){
+    let id:number = null;
+    let username:string = ''; 
+    let email:string = '';
+    this.userlistService.changeValues(id, username, email);
   }
 }

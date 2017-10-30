@@ -8,7 +8,8 @@ import { DataService } from '../../services/data.service';
 })
 export class CreatePostComponent implements OnInit {
 
-  constructor(private createPostService:DataService){}
+  constructor(private createPostService:DataService){
+  }
 
   ngOnInit() {
   }
