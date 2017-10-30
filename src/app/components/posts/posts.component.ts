@@ -12,7 +12,7 @@ import { Comment } from '../../interfaces/comment.interface';
   styleUrls: ['./posts.component.scss']
 })
 export class PostsComponent implements OnInit {
-  posts:Post[];
+  //posts:Post[];
   comments:Comment[];
   post:any;
   end:number;
@@ -20,9 +20,9 @@ export class PostsComponent implements OnInit {
   constructor(private postService:DataService, private commentServices: DataService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.postService.getPostsName().subscribe((posts)=>{
+    /*this.postService.getStaticPosts().subscribe((posts)=>{
       this.posts = posts;
-    });
+    });*/
 
     this.commentServices.getComments().subscribe((comments) => {
       this.comments=comments;
@@ -36,6 +36,7 @@ export class PostsComponent implements OnInit {
 
   getId(id:number){
     this.postService.getStaticPostId(id).subscribe((postId) => {
+      console.log(postId);
       this.post = postId;
     });
   }

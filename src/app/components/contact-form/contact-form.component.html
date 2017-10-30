@@ -1,17 +1,39 @@
-<form (submit)="onClick(completename.value, email.value)">
-  <div class="form-group">
-    <label for="completename">Nombre Completo</label>
-    <input type="name" class="form-control" #completename placeholder="Su nombre completo">
-  </div>
-  <p id="nameIsOk"></p> 
-  <div class="form-group">
-    <label for="email">Correo Electronico</label>
-    <input type="text" class="form-control" #email placeholder="nombre@ejemplo.com">
-    <p id="emailIsOk"></p>
-  </div>
-  <div class="form-group">
-    <label for="comments">Comentarios</label>
-    <textarea class="form-control" id="comments" rows="3" placeholder="Ingrese su comentario aqui"></textarea>
-  </div>
-  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Enviar</button>
-</form>
+<section>
+  <form [formGroup]="contactForm" (ngSubmit)="onClick(name.value, email.value, comment.value, country.value); name.value=''; email.value=''; comment.value=''; country.value='';">
+    <div class="form-group">
+      <label for="completename">Complete name</label>
+      <input type="name" class="form-control" formControlName="name" placeholder="Complete name" #name>
+    </div>
+    <div class="alert alert-warning" role="alert" *ngIf="!contactForm.controls['name'].valid && contactForm.controls['name'].touched">
+      {{alertMessage}}
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text" class="form-control" formControlName="email" placeholder="email here" #email>
+    </div>
+    <div class="alert alert-warning" role="alert" *ngIf="!contactForm.controls['email'].valid && contactForm.controls['email'].touched">
+      {{alertMessage}}
+    </div>
+    <div class="form-group">
+      <label for="comments">Comment</label>
+      <textarea class="form-control" id="comments" rows="3" formControlName="comment" placeholder="Comment here" #comment></textarea>
+    </div>
+    <div class="alert alert-warning" role="alert" *ngIf="!contactForm.controls['comment'].valid && contactForm.controls['comment'].touched">
+      {{alertMessage}}
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputState">Country</label>
+      <select id="inputState" class="form-control" formControlName="country" #country>
+        <option selected>Argentina</option>
+        <option>Rest of the world</option>
+      </select>
+    </div>
+    <div class="alert alert-warning" role="alert" *ngIf="!contactForm.controls['country'].valid && contactForm.controls['country'].touched">
+      {{alertMessage}}
+    </div>
+    <div class="success-message" *ngIf="successMessage==true">
+      Your information has been sent correctly.
+    </div>
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Enviar</button>
+  </form>
+</section>

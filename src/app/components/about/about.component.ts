@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AboutService } from '../../services/about.service';
 
 @Component({
   selector: 'app-about',
@@ -7,22 +6,12 @@ import { AboutService } from '../../services/about.service';
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit {
-  hobbies:string[]=[];
   
-  constructor(private aboutService : AboutService) { }
+  constructor(){
 
-  ngOnInit() {
-    this.aboutService.getHobbies().subscribe(hobbies => {
-      this.hobbies = hobbies;
-    });
   }
-  addHobby(newHobby: string) {
-    if (!newHobby) {
-      return;
-    }
-    this.hobbies.push(newHobby);
-  }
-  deleteHobby(index: number){
-    this.hobbies.splice(index, 1);
+
+  ngOnInit(){
+
   }
 }

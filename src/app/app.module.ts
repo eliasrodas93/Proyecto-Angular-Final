@@ -5,7 +5,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {MatSidenavModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 import { AppComponent } from './app.component';
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
@@ -15,9 +16,12 @@ import { AboutComponent } from './components/about/about.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { CreatePostComponent } from './components/create-post/create-post.component';
+import { UserListComponent } from './components/user-list/user-list.component';
 
 import { DataService } from './services/data.service';
-import { AboutService } from './services/about.service';
+import { UserListService } from './services/user-list.service';
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 
 @NgModule({
@@ -29,7 +33,10 @@ import { AboutService } from './services/about.service';
     AboutComponent,
     SidenavComponent,
     PostsComponent,
-    CreatePostComponent
+    CreatePostComponent,
+    UserListComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -38,11 +45,13 @@ import { AboutService } from './services/about.service';
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   providers: [
     DataService,
-    AboutService
+    UserListService
   ],
   bootstrap: [AppComponent]
 })

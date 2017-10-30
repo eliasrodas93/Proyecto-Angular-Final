@@ -1,15 +1,10 @@
 section{
-    min-height: 500px;
-}
-form{
     padding-left: 10px;
+    min-height: 500px;
 }
 div{
     &.alert{
         font-size: 15px;
-        padding: 0px;
-    }
-    &.col-md-4{
         padding: 0px;
     }
 }

@@ -1,0 +1,22 @@
+<section>
+  <form [formGroup]="loginForm" (ngSubmit)="verifyUser(myUsername.value, myEmail.value); myUsername.value=''; myEmail.value='';">
+    <div class="form-group">
+      <label>Username:</label>
+      <input type="text" class="form-control" placeholder="Username" formControlName="username" #myUsername>
+    </div>
+    <div class="alert alert-warning" role="alert" *ngIf="!loginForm.controls['username'].valid && loginForm.controls['username'].touched">
+      {{alertMessage}}
+    </div>
+    <div class="form-group">
+      <label>Email:</label>
+      <input type="text" class="form-control" placeholder="Email" formControlName="email" #myEmail>
+    </div>
+    <div class="alert alert-warning" role="alert" *ngIf="!loginForm.controls['email'].valid && loginForm.controls['email'].touched">
+      {{alertMessage}}
+    </div>
+    <div *ngIf="errorMessage==false">
+      This user could not be found...
+    </div>
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Signup</button>
+  </form>
+</section>

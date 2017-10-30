@@ -1,0 +1,36 @@
+<section>
+  <form [formGroup]="signupForm" (ngSubmit)="createUser(myId.value, myName.value, myUsername.value, myEmail.value); myId.value=''; myName.value=''; myUsername.value=''; myEmail.value='';">
+    <div class="form-group">
+      <label>ID:</label>
+      <input type="id" class="form-control" formControlName="id" #myId readonly>
+    </div>
+    <div class="form-group">
+      <label>Name:</label>
+      <input type="name" class="form-control"placeholder="Complete Name" formControlName="name" #myName>
+    </div>
+    <div class="alert alert-warning" role="alert" *ngIf="!signupForm.controls['name'].valid && signupForm.controls['name'].touched">
+      {{alertMessage}}
+    </div>
+    <div class="form-group">
+      <label>Username:</label>
+      <input type="text" class="form-control" placeholder="Username" formControlName="username" #myUsername>
+    </div>
+    <div class="alert alert-warning" role="alert" *ngIf="!signupForm.controls['username'].valid && signupForm.controls['username'].touched">
+      {{alertMessage}}
+    </div>
+    <div class="form-group">
+      <label>Email:</label>
+      <input type="text" class="form-control" placeholder="Email" formControlName="email" #myEmail>
+    </div>
+    <div class="alert alert-warning" role="alert" *ngIf="!signupForm.controls['email'].valid && signupForm.controls['email'].touched">
+      {{alertMessage}}
+    </div>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input class="form-check-input" type="checkbox" value="1" formControlName="adminValidate">
+        I want to be admin...
+      </label>
+    </div>
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" [disabled]="!signupForm.valid">Signup</button>
+  </form>
+</section>

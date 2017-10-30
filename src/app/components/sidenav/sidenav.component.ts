@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
-
 import { Post } from '../../interfaces/post.interface';
 
 @Component({
@@ -9,13 +8,9 @@ import { Post } from '../../interfaces/post.interface';
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent implements OnInit {
-  posts:Post[];
-  page: number; // the current page
-  count: number; // how many total items there are in all pages
-  perPage: number; // how many items we want to show per page
-  pagesToShow: number; // how many pages between next/prev
-  loading: boolean; // check if content is being loaded
-
+  posts: Post[];
+  page: number;
+  totalItems: number = 100;
 
   constructor(private sidenavService:DataService){}
 

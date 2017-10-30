@@ -22,11 +22,17 @@
 <div class="comment-button">
   <button class="btn btn-outline-success my-2 my-sm-0" (click)="addComment(myComment.value); myComment.value='';">Comentar</button>
 </div>
-<section>
-  <div *ngFor="let comment of comments | slice:0:end" class="comment-section">
-    <div>
-      <h6>{{comment.email | lowercase}}</h6>
-      <p>{{comment.body}}</p>
-    </div>
-  </div>
-</section>
+<ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+  <ngb-panel title="Comentarios">
+    <ng-template ngbPanelContent>
+      <section>
+        <div *ngFor="let comment of comments | slice:0:end" class="comment-section">
+          <div>
+            <h6>{{comment.email | lowercase}}</h6>
+            <p>{{comment.body}}</p>
+          </div>
+        </div>
+      </section>
+    </ng-template>
+  </ngb-panel>
+</ngb-accordion>

@@ -9,3 +9,13 @@ nav{
         font-size: 20px;
     }
 }
+button{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+div{
+    &.thenBlock2{
+        color: #f2ffff;
+        margin-right: 15px;
+    }
+}

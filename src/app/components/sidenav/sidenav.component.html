@@ -1,16 +1,12 @@
 <mat-sidenav-container>
   <mat-sidenav mode="side" opened="true">
     <ul class="content-list">
-      <li *ngFor="let post of posts">
+      <li *ngFor="let post of posts | paginate: { itemsPerPage: 10, currentPage: page }">
         <a [routerLink]="['/post', post.id]">{{post.title}}</a>
       </li>
     </ul>
-    <div class="pagination">
-      <span>{{ getMin() }} of {{ getMax() }} of {{ count }}</span>
-      <span>{{ totalPages() }} pages</span>
-      <button (click)="onPrev()" [disabled]="page === 1 || loading">Previous</button>
-      <button *ngFor="let pageNum of getPages()" (click)="onPage(pageNum)"></button>
-      <button (click)="onNext()" [disabled]="lastPage() || loading">Next</button>
+    <div>
+      <pagination-controls (pageChange)="page = $event" maxSize="3"></pagination-controls>
     </div>
   </mat-sidenav>
   <div class="my-content">        

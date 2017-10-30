@@ -30,21 +30,36 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" routerLink="">Inicio <span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="">Home<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/about-us">Nosotros</a>
+        <a class="nav-link" routerLink="/about-us">About Us</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/contact-us">Contacto</a>
+        <a class="nav-link" routerLink="/contact-us">Contact</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/create-post">Crear Post</a>
+        <a class="nav-link" routerLink="/create-post">Create Post</a>
       </li>
+      <div *ngIf="currentUserId==0; then thenBlock; else elseBlock"></div>
+      <ng-template class="thenBlock" #thenBlock>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/user-list">User List</a>
+        </li>
+      </ng-template>
+      <ng-template class="elseBlock" #elseBlock>
+        <li class="nav-item">
+          <a class="nav-link disabled">User List</a>
+        </li>
+      </ng-template>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-    </form>
+    <div *ngIf="currentUserUsername; then thenBlock2; else elseBlock2"></div>
+    <ng-template #thenBlock2>
+      <div class="thenBlock2">{{currentUserUsername}}</div>
+    </ng-template>
+    <ng-template class="elseBlock2" #elseBlock2>
+      <button class="btn btn-outline-success my-2 my-sm-0" routerLink="/login">Login</button>
+      <button class="btn btn-outline-success my-2 my-sm-0" routerLink="/signup">Signup</button>
+    </ng-template>  
   </div>
 </nav>

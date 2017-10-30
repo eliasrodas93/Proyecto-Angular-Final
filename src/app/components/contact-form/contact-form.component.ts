@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-contact-form',
@@ -6,29 +7,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./contact-form.component.scss']
 })
 export class ContactFormComponent implements OnInit {
-  constructor() { }
+  contactForm:FormGroup;
+  name:string;
+  email:string;
+  comment:string;
+  country:string;
+  successMessage:boolean = false;
+  alertMessage:string = "This is a required field";
+  constructor(private fb:FormBuilder){
+    this.contactForm = fb.group({
+      'name': ['', Validators.required],
+      'email': ['', Validators.compose([Validators.required, Validators.email])],
+      'comment': ['', Validators.required],
+      'country': ['', Validators.required]
+    });
+  }
 
   ngOnInit() {
   }
 
-  onClick(completename, email){
-    if(!completename){
-      console.log("No ingreso un valor");
-      document.getElementById('nameIsOk').innerHTML="<strong>Warning!</strong> You did not set a name!!!";
-    }
-    else{
-    console.log(completename);
-    document.getElementById('nameIsOk').innerHTML="<strong>Congratulation!</strong> Name is OK!!!.";
-    }
-    let re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (re.test(email)) {
-      console.log("Email OK");
-      document.getElementById('emailIsOk').innerHTML="<strong>Congratulation!</strong> Email is OK!!!.";
-    } 
-    else{
-      console.log("Email not OK");
-      document.getElementById('emailIsOk').innerHTML="<strong>Warning!</strong> Your email is incorrect!!!";
-    }
-    return false;
+  onClick(name:string, email:string, comment:string, country:string,){
+    this.successMessage=true;
   }
-};
+}
